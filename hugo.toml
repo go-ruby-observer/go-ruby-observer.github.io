@@ -1,0 +1,31 @@
+baseURL = "https://go-ruby-observer.github.io/"
+title = "go-ruby-observer"
+disableKinds = ["taxonomy", "term", "RSS", "sitemap", "404"]
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[[params.phases]]
+  name = "Observer registry"
+  status = "ready"
+  blurb = "A `Registry` backs one object that includes `Observable`: it owns the ordered set of observers (MRI's insertion-ordered Hash-keyed store) and the `changed` flag. A zero `Registry` is ready to use."
+[[params.phases]]
+  name = "Add / delete / count"
+  status = "ready"
+  blurb = "`AddObserver`, `DeleteObserver`, `DeleteObservers` and `CountObservers` mirror `add_observer` / `delete_observer` / `delete_observers` / `count_observers`. Re-adding an observer updates its method and keeps its position."
+[[params.phases]]
+  name = "Changed-flag lifecycle"
+  status = "ready"
+  blurb = "`Changed(state)` and `ChangedQ()` map to `changed(state=true)` and `changed?`: the flag starts false, `Changed(true)` sets it, `Changed(false)` clears it."
+[[params.phases]]
+  name = "Notify decision & reset"
+  status = "ready"
+  blurb = "`NotifyObservers` is a no-op returning `ok == false` when not changed; when changed it returns the observers in insertion order, each paired with its method, then resets `changed?` to false. The `update` dispatch stays in rbgo."
+[[params.phases]]
+  name = "respond_to? & raise semantics"
+  status = "ready"
+  blurb = "Responsiveness is delegated to a caller-supplied `RespondTo` callback. `AddObserver` of a non-responding method returns `*NotRespondingError` with MRI's verbatim message ``observer does not respond to `update'``."
+[[params.phases]]
+  name = "MRI verification & coverage"
+  status = "ready"
+  blurb = "Behaviour pinned against the system `ruby -robserver` (Ruby 4.0.5); 100% coverage, gofmt + go vet clean, green across all six 64-bit Go arches and three OSes."
