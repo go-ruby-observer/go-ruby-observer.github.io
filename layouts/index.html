@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+{{/* Dark Reader repaints pages that already draw their own dark theme, as this one does: ask it to stand aside. */}}
+<meta name="darkreader-lock">
 <title>{{ .Site.Title }} — Ruby's Observable mixin (observer registry and changed flag) in pure Go, no cgo</title>
 <meta name="description" content="go-ruby-observer — a pure-Go reimplementation of the registry and changed flag behind Ruby's Observable mixin, MRI-compatible, no cgo.">
 <style>
