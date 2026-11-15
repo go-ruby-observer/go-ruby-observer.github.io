@@ -41,11 +41,9 @@
   <div class="hero"><div class="wrap">
     <div>
       <h1 class="head">go-ruby-observer</h1>
-      <p class="sub">Ruby's <code>Observable</code> mixin — the observer registry and changed flag — in pure Go, MRI-compatible, no cgo.</p>
-      <div class="cta">
-        <a class="btn btn-primary" href="/docs/">{{ partial "icons/book.html" . }}Documentation</a>
-        <a class="btn btn-ghost" href="https://github.com/go-ruby-observer/observer">{{ partial "icons/github.html" . }}GitHub</a>
-      </div>
+      <p class="sub">Ruby's <code>Observable</code> mixin — the observer registry and changed flag — in {{ if partial "mantra-on.html" . }}Go{{ else }}pure Go{{ end }}, MRI-compatible, {{ if not (partial "mantra-on.html" $) }}no cgo{{ end }}.</p>
+      {{/* [[params.cta]] in hugo.toml: the kit renders the row */}}
+      {{ partial "cta.html" . }}
       <div class="trust">{{ if not (partial "mantra-on.html" $) }}<span class="pill">pure Go · zero cgo</span>{{ end }}<span class="pill">Observable mixin</span><span class="pill">observer registry</span><span class="pill">changed flag</span><span class="pill">insertion order</span><span class="pill">add / delete / count</span><span class="pill">notify decision &amp; reset</span><span class="pill">update dispatch in rbgo</span><span class="pill">MRI-faithful</span><span class="pill">100% coverage</span><span class="pill">6 arches</span></div>
       <div class="legacy"><div class="badges">
       <a href="/docs/"><img alt="Documentation (MkDocs Material + mike)" src="https://img.shields.io/badge/docs-mkdocs--material-9B1C2E"></a>
